@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "envId": "prod-7g7k7nc9d76f53e7",
+  "resource": {
+    "env": {
+      "secretId": "wxdb1a9c4940e43444",
+      "secretKey": "your-secret-key"
+    },
+    "service": {
+      "name": "chaolun-server",
+      "serviceConfig": {
+        "minNum": 0,
+        "maxNum": 5,
+        "cpu": 1,
+        "mem": 2048,
+        "envVariables": {
+          "NODE_ENV": "production",
+          "PORT": "80",
+          "PROD_DB_HOST": "10.28.100.124",
+          "PROD_DB_PORT": "3306",
+          "PROD_DB_NAME": "mingrixueba",
+          "PROD_DB_USER": "root",
+          "PROD_DB_PASS": "HM9p7kkv"
+        },
+        "billEnvId": "prod-7g7k7nc9d76f53e7"
+      },
+      "dockerConfig": {
+        "imageType": "private",
+        "dockerfilePath": "./Dockerfile"
+      },
+      "deployConfig": {
+        "containerPort": 80,
+        "servicePath": "/"
+      }
+    }
+  }
+}

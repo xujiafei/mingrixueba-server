@@ -10,7 +10,22 @@ RUN apk add ca-certificates
 # 安装依赖包，如需其他依赖包，请到alpine依赖包管理(https://pkgs.alpinelinux.org/packages?name=php8*imagick*&branch=v3.13)查找。
 # 选用国内镜像源以提高下载速度
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tencent.com/g' /etc/apk/repositories \
-&& apk add --update --no-cache nodejs npm
+&& apk add --update --no-cache \\
+    nodejs \
+    npm \
+    # 图片处理依赖
+    graphicsmagick \
+    imagemagick \
+    # PDF处理依赖
+    poppler-utils \
+    ghostscript \
+    # 数据库依赖
+    mysql-client \
+    # 其他系统依赖
+    tzdata \
+    # 修复时区
+    && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo Asia/Shanghai > /etc/timezone
 
 # # 指定工作目录
 WORKDIR /app
